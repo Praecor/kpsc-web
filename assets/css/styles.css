@@ -1,6 +1,6 @@
-/* styles.css */
-
-/* Ensure the body takes up the full height of the viewport */
+/* =========================================================
+   Base Styles
+   ========================================================= */
 body {
   display: flex;
   flex-direction: column;
@@ -8,13 +8,64 @@ body {
   margin: 0;
 }
 
-/* Main content should expand to fill the remaining space */
 main {
   flex: 1;
-  /* margin-top: 120px; Ensure content isn't covered by navbar */
 }
 
-/* Footer should stick to the bottom */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* =========================================================
+   Navigation Bar
+   ========================================================= */
+   header {
+    background-color: #4C4B16;
+    color: #fff;
+    padding: 1rem 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure the navbar is on top of other content */
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    background-color: #4C4B16;
+    padding: 0 1rem;
+  }
+
+  .navbar img {
+    height: 100%; /* Make the logo fit the height of the navbar */
+    max-height: 60px; /* Ensure logo doesn’t get too large */
+  }
+
+  .nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin-left: auto; /* Push nav links to the right */
+  }
+
+  .nav-list a {
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase; /* Professional touch */
+    letter-spacing: 2px; /* Add more space between letters */
+    font-size: 1.2em; /* Increase font size for prominence */
+  }
+
+  .nav-list a:hover {
+    text-decoration: underline;
+  }
+
+
+
+
 footer {
   text-align: center;
   padding: 2rem 1rem;
@@ -23,56 +74,6 @@ footer {
   margin-top: auto; /* Push footer to bottom */
 }
 
-/* Base layout styles */
-.container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-header {
-  background-color: #4C4B16;
-  color: #fff;
-  padding: 1rem 0;
-  /* position: fixed; */
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000; /* Ensure the navbar is on top of other content */
-}
-
-.navbar {
-  display: flex;
-  align-items: center;
-  height: 80px;
-  background-color: #4C4B16;
-  padding: 0 1rem;
-}
-
-.navbar img {
-  height: 100%; /* Make the logo fit the height of the navbar */
-  max-height: 60px; /* Ensure logo doesn’t get too large */
-}
-
-.nav-list {
-  list-style: none;
-  display: flex;
-  gap: 2rem;
-  margin-left: auto; /* Push nav links to the right */
-}
-
-.nav-list a {
-  color: #fff;
-  font-weight: 800;
-  text-transform: uppercase; /* Professional touch */
-  letter-spacing: 2px; /* Add more space between letters */
-  font-size: 1.2em; /* Increase font size for prominence */
-}
-
-.nav-list a:hover {
-  text-decoration: underline;
-}
 
 
 /* Footer should stick to the bottom */
@@ -165,6 +166,7 @@ footer {
 
   .navbar {
     padding: 0 1.5rem;
+    font-size: 12px;
   }
 
   .nav-list {
@@ -354,20 +356,85 @@ footer {
 
 /* Mobile-first styles */
 @media (max-width: 767px) {
+  .news-post {
+    padding: 0.5rem;
+  }
   .news-content {
-    width: 95vw; /* Use 95% of viewport width */
-    padding: 0; /* Remove padding to use full width */
+    width: 95vw;
+    padding: 0;
   }
 
   .news-post-header h2 {
-    font-size: 2rem; /* Adjust title size for smaller screens */
+    font-size: 2rem;
   }
 
   .news-post-description {
-    font-size: 1.2rem; /* Slightly smaller description text on mobile */
+    font-size: 1.2rem;
   }
 
   .gallery-container img {
-    max-width: 100%; /* Images take full width of their container */
+    max-width: 100%;
   }
+}
+
+/* About Us section styling */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9; /* Light background for separation */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.about-content h1 {
+  font-size: 2.5rem;
+  color: #4C4B16; /* Consistent with your theme */
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Team Members Table styling */
+.team-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9; /* Light background for separation */
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.team-content h2 {
+  font-size: 2rem;
+  color: #4C4B16;
+  margin-bottom: 1rem;
+}
+
+.club-members {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.club-members th,
+.club-members td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.club-members th {
+  background-color: #4C4B16;
+  color: white;
+  font-weight: bold;
+}
+
+.club-members tr:hover {
+  background-color: #f1f1f1; /* Hover effect for rows */
 }
