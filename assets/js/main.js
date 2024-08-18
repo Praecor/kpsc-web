@@ -1,6 +1,3 @@
-// main.js
-
-
-(function() {
+document.addEventListener('DOMContentLoaded', () => {
   console.log('Main.js initialized');
-})();
+});
