@@ -45,18 +45,60 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   }
 
-  function displayContent(data) {
+  async function displayContent(data) {
     const contentContainer = document.getElementById('content-container');
     if (contentContainer && data) {
       contentContainer.innerHTML = ''; // Clear existing content
+
+      // Create a map to resolve assets
+      const assetMap = new Map();
+      if (data.includes && data.includes.Asset) {
+        data.includes.Asset.forEach(asset => {
+          assetMap.set(asset.sys.id, asset.fields.file.url);
+        });
+      }
+
       data.items.forEach(item => {
         const contentItem = document.createElement('div');
-        contentItem.className = 'content-item';
-        contentItem.innerHTML = `
+        contentItem.className = 'news-post';
+
+        // Create the header with title and date
+        const postHeader = document.createElement('div');
+        postHeader.className = 'news-post-header';
+        postHeader.innerHTML = `
           <h2>${item.fields.title}</h2>
-          <p>${item.fields.description}</p>
-          <a href="${item.fields.link}">Read more</a>
+          <span class="date">${new Date(item.sys.createdAt).toLocaleDateString()}</span>
         `;
+        contentItem.appendChild(postHeader);
+
+        // Create the description section
+        const postDescription = document.createElement('div');
+        postDescription.className = 'news-post-description';
+        postDescription.innerHTML = `<p>${item.fields.description}</p>`;
+        contentItem.appendChild(postDescription);
+
+        // Create the gallery if images exist
+        if (item.fields.images && item.fields.images.length > 0) {
+          const galleryContainer = document.createElement('div');
+          galleryContainer.className = 'gallery-container';
+
+          item.fields.images.forEach(image => {
+            const assetId = image.sys.id; // Get the ID of the linked asset
+            const imageURL = assetMap.get(assetId); // Retrieve the URL from the asset map
+
+            if (imageURL) {
+              const imgElement = document.createElement('img');
+              imgElement.src = `https:${imageURL}`; // Prefixing with https:
+              imgElement.alt = item.fields.title || ''; // Use the post title as alt text if available
+              galleryContainer.appendChild(imgElement);
+            } else {
+              console.warn('Asset not found for image:', image);
+            }
+          });
+
+          contentItem.appendChild(galleryContainer);
+        }
+
         contentContainer.appendChild(contentItem);
       });
     }
