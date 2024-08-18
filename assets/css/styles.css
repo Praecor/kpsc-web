@@ -1,5 +1,28 @@
 /* styles.css */
 
+/* Ensure the body takes up the full height of the viewport */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Main content should expand to fill the remaining space */
+main {
+  flex: 1;
+  /* margin-top: 120px; Ensure content isn't covered by navbar */
+}
+
+/* Footer should stick to the bottom */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background-color: #4C4B16;
+  color: #fff;
+  margin-top: auto; /* Push footer to bottom */
+}
+
 /* Base layout styles */
 .container {
   width: 100%;
@@ -12,7 +35,7 @@ header {
   background-color: #4C4B16;
   color: #fff;
   padding: 1rem 0;
-  position: fixed; /* Make the navbar fixed */
+  /* position: fixed; */
   top: 0;
   left: 0;
   width: 100%;
@@ -41,23 +64,24 @@ header {
 
 .nav-list a {
   color: #fff;
-  font-weight: bold;
+  font-weight: 800;
   text-transform: uppercase; /* Professional touch */
+  letter-spacing: 2px; /* Add more space between letters */
+  font-size: 1.2em; /* Increase font size for prominence */
 }
 
 .nav-list a:hover {
   text-decoration: underline;
 }
 
-main {
-  margin-top: 80px; /* Offset the fixed navbar height */
-}
 
+/* Footer should stick to the bottom */
 footer {
   text-align: center;
   padding: 2rem 1rem;
   background-color: #4C4B16;
   color: #fff;
+  margin-top: auto; /* Push footer to bottom */
 }
 
 /* Background image for the welcome page */
@@ -72,7 +96,8 @@ footer {
   color: #fff;
   text-align: center;
   position: relative;
-  padding-top: 10vh; /* Adjust vertical padding */
+  padding-top: 10vh;
+  margin-top: -20px;
 }
 
 .welcome-section .welcome-content {
@@ -274,40 +299,75 @@ footer {
   border-radius: 8px; /* Rounded corners */
 }
 
-/* Title and Date Container */
-.news-post-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem; /* Space between header and description */
+
+/* News content container styles */
+.news-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding: 0 1rem;
 }
 
+/* Title within the news post */
 .news-post-header h2 {
-  font-size: 2.5rem; /* Large and prominent title */
-  color: #4C4B16; /* Consistent with your theme */
+  font-size: 2.5rem;
+  color: #4C4B16;
   margin: 0;
+  margin-bottom: 0.5rem;
 }
 
+/* Make the date more prominent */
 .news-post-header .date {
-  font-size: 1.2rem;
-  color: #888; /* Subtle color for date */
+  font-size: 1.5rem;
+  color: #4C4B16;
   font-weight: bold;
+  background-color: #f0f0f0;
+  padding: 0.2rem 0.5rem;
+  border-radius: 5px;
 }
 
-/* Description */
+/* Description with larger text */
 .news-post-description {
-  font-size: 1.2rem;
-  color: #333; /* Darker text for readability */
-  margin-bottom: 1.5rem; /* Space between description and gallery */
+  font-size: 1.4rem;
+  color: #333;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-/* Gallery already styled with .gallery-container and .gallery-container img */
+/* Adjusting the gallery image size */
+.gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
 
-/* Adding some hover effects for gallery images */
 .gallery-container img {
-  transition: transform 0.2s ease-in-out;
+  max-width: 500px; /* Slightly larger images */
+  height: auto;
+  border-radius: 5px;
+  flex-grow: 1;
+  object-fit: cover; /* Ensure images are well-contained */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.gallery-container img:hover {
-  transform: scale(1.05); /* Slight zoom effect on hover */
+/* Mobile-first styles */
+@media (max-width: 767px) {
+  .news-content {
+    width: 95vw; /* Use 95% of viewport width */
+    padding: 0; /* Remove padding to use full width */
+  }
+
+  .news-post-header h2 {
+    font-size: 2rem; /* Adjust title size for smaller screens */
+  }
+
+  .news-post-description {
+    font-size: 1.2rem; /* Slightly smaller description text on mobile */
+  }
+
+  .gallery-container img {
+    max-width: 100%; /* Images take full width of their container */
+  }
 }
