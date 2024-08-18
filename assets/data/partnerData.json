@@ -1,0 +1,80 @@
+{
+  "sponsors": [
+    {
+      "id": 1,
+      "category": "sponsor",
+      "title": "Sponsor 1",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "sponsor",
+      "title": "Sponsor 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "sponsor",
+      "title": "Sponsor 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "sponsor",
+      "title": "Sponsor 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "sponsor",
+      "title": "Sponsor 2",
+      "image": "assets/images/kps-logo.png"
+    }
+  ],
+  "partners": [
+    {
+      "id": 1,
+      "category": "partner",
+      "title": "Partner 1",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "partner",
+      "title": "Partner 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "partner",
+      "title": "Partner 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "partner",
+      "title": "Partner 2",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "partner",
+      "title": "Partner 2",
+      "image": "assets/images/kps-logo.png"
+    }
+  ],
+  "sisterClubs": [
+    {
+      "id": 1,
+      "category": "sister-club",
+      "title": "Sister Club 1",
+      "image": "assets/images/kps-logo.png"
+    },
+    {
+      "id": 2,
+      "category": "sister-club",
+      "title": "Sister Club 2",
+      "image": "assets/images/kps-logo.png"
+    }
+  ]
+}

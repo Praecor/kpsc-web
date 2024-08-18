@@ -4,37 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KPS Website</title>
+  <title>KPS Club</title>
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/typography.css">
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
+
   <header>
-    <div class="container">
-      <nav class="navbar">
-        <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="news.html">News</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+    <div class="navbar">
+      <img src="assets/images/kps-logo.png" alt="KPS Logo">
+      <ul class="nav-list">
+        <li><a href="index.html">Domov</a></li>
+        <li><a href="news.html">Novice</a></li>
+        <li><a href="about.html">O klubu</a></li>
+      </ul>
     </div>
   </header>
 
   <main>
-    <section class="home-content">
-      <h1>Welcome to KPS Website</h1>
-      <p>Your club for practical shooting.</p>
+    <section class="welcome-section">
+      <div class="welcome-content">
+        <h1>Klub praktičnega streljanja Črnomelj</h1>
+        <img src="assets/images/kps-logo.png" alt="KPS Logo">
+      </div>
+    </section>
+
+    <section class="sponsors-section">
+      <div class="section-container">
+        <h3>Partnerji</h3>
+        <div class="grid-container" id="partners-grid">
+          <!-- Partner grid items will be inserted here -->
+        </div>
+      </div>
+
+      <div class="section-container">
+        <h3>Sestrski klubi</h3>
+        <div class="grid-container" id="sister-clubs-grid">
+          <!-- Sister clubs grid items will be inserted here -->
+        </div>
+      </div>
+
+      <div class="section-container">
+        <h3>Sponzorji</h3>
+        <div class="grid-container" id="sponsors-grid">
+          <!-- Sponsor grid items will be inserted here -->
+        </div>
+      </div>
     </section>
   </main>
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 KPS Črnomelj. All rights reserved.</p>
+      <p>&copy; 2024 KPS Črnomelj. Vse pravice zadržane.</p>
     </div>
   </footer>
+
+  <script src="assets/js/load-partner-content.js"></script>
 </body>
 
 </html>
