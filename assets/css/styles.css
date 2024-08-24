@@ -1,11 +1,10 @@
-/* =========================================================
-   Base Styles
-   ========================================================= */
+/* Base Styles */
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   margin: 0;
+  user-select: none;
 }
 
 main {
@@ -19,67 +18,66 @@ main {
   padding: 0 1rem;
 }
 
-/* =========================================================
-   Navigation Bar
-   ========================================================= */
-   header {
-    background-color: #4C4B16;
-    color: #fff;
-    padding: 1rem 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure the navbar is on top of other content */
-  }
-  .navbar {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    background-color: #4C4B16;
-    padding: 0 1rem;
-  }
+/* Navigation Bar */
+header {
+  background-color: #4C4B16;
+  color: #fff;
+  padding: 1rem 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
 
-  .navbar img {
-    height: 100%; /* Make the logo fit the height of the navbar */
-    max-height: 60px; /* Ensure logo doesn’t get too large */
-  }
+.navbar {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background-color: #4C4B16;
+  padding: 0 1rem;
+}
 
-  .nav-list {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    margin-left: auto; /* Push nav links to the right */
-  }
+.navbar img {
+  height: 100%;
+  max-height: 60px;
+}
 
-  .nav-list a {
-    color: #fff;
-    font-weight: 800;
-    text-transform: uppercase; /* Professional touch */
-    letter-spacing: 2px; /* Add more space between letters */
-    font-size: 1.2em; /* Increase font size for prominence */
-  }
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin-left: auto;
+}
 
-  .nav-list a:hover {
-    text-decoration: underline;
-  }
+.nav-list a {
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2em;
+}
 
-/* Footer should stick to the bottom */
+.nav-list a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 2rem 1rem;
   background-color: #4C4B16;
   color: #fff;
-  margin-top: auto; /* Push footer to bottom */
+  margin-top: auto;
 }
 
-/* Background image for the welcome page */
+/* Welcome Section */
 .welcome-section {
   background-image: url('../images/kps-welcome.jpg');
   background-size: cover;
   background-position: center;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
   display: flex;
-  align-items: flex-start; /* Align the content closer to the top */
+  align-items: flex-start;
   justify-content: center;
   color: #fff;
   text-align: center;
@@ -91,180 +89,35 @@ footer {
 .welcome-section .welcome-content {
   position: relative;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  padding: 2rem;
-  border-radius: 8px; /* Rounded corners for a modern look */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .welcome-section .welcome-content img {
-  max-width: 200px; /* Adjust the logo size */
-  margin-bottom: 1rem; /* Space between logo and text */
+  max-width: 200px;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .welcome-section h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #333;
-}
-
-/* Responsive Styles */
-
-/* Mobile-first styles */
-@media (max-width: 767px) {
-  .welcome-section .welcome-content {
-    width: 100%; /* Make the content edge-to-edge on mobile */
-    border-radius: 0; /* Remove rounded corners for mobile */
-    padding: 1rem;
-  }
-
-  .navbar {
-    padding: 0 1.5rem;
-    font-size: 12px;
-  }
-
-  .nav-list {
-    gap: 1.5rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 2rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    padding: 0 2rem;
-  }
-
-  .navbar {
-    padding: 0 2rem;
-  }
-
-  .nav-list {
-    gap: 2rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 2.5rem;
-  }
-
-  .sponsor-item {
-    width: 250px;
-    height: 120px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding: 0 3rem;
-  }
-
-  .navbar {
-    padding: 0 3rem;
-  }
-
-  .nav-list {
-    gap: 2.5rem;
-  }
-
-  .welcome-section h1 {
-    font-size: 3rem;
-  }
-
-  .sponsor-item {
-    width: 300px;
-    height: 150px;
-  }
-}
-
-
-/* Placeholder grid styles with borders */
-.sponsors-section {
-  padding: 4rem 1rem;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.sponsors-section .section-container {
-  border: 2px solid #4C4B16;
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-.sponsors-section .grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.sponsors-section .grid-item {
-  border: 1px solid blue;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add drop shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
-}
-
-.sponsors-section .grid-item:hover {
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-.sponsors-section .grid-item img {
-  max-width: 100px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
-.sponsors-section .grid-item h3 {
-  font-size: 1rem;
-  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   margin: 0;
 }
 
-/* Desktop Layout */
-@media (min-width: 1024px) {
-  .sponsors-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 2rem;
-  }
-
-  .sponsors-section .section-container {
-    margin-bottom: 0;
-  }
-}
-
-/* Mobile-first styles */
-@media (max-width: 1023px) {
-  .sponsors-section .section-container {
-    margin-bottom: 2rem;
-  }
-
-  .sponsors-section .grid-container {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* News Post Container */
+/* News Post Styles */
 .news-post {
-  background-color: #f9f9f9; /* Light background for separation */
-  border: 2px solid #4C4B16; /* Border with the main color */
+  background-color: #f9f9f9;
+  border: 2px solid #4C4B16;
   padding: 2rem;
-  margin-bottom: 2rem; /* Spacing between posts */
-  border-radius: 8px; /* Rounded corners */
+  margin-bottom: 2rem;
+  border-radius: 8px;
 }
 
-
-/* News content container styles */
 .news-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -272,7 +125,6 @@ footer {
   padding: 0 1rem;
 }
 
-/* Title within the news post */
 .news-post-header h2 {
   font-size: 2.5rem;
   color: #4C4B16;
@@ -280,7 +132,6 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-/* Make the date more prominent */
 .news-post-header .date {
   font-size: 1.5rem;
   color: #4C4B16;
@@ -290,7 +141,6 @@ footer {
   border-radius: 5px;
 }
 
-/* Description with larger text */
 .news-post-description {
   font-size: 1rem;
   color: #333;
@@ -298,7 +148,7 @@ footer {
   margin-bottom: 1.5rem;
 }
 
-/* Adjusting the gallery image size */
+/* Gallery Section */
 .gallery-container {
   display: flex;
   flex-wrap: wrap;
@@ -308,43 +158,20 @@ footer {
 }
 
 .gallery-container img {
-  max-width: 500px; /* Slightly larger images */
+  max-width: 500px;
   height: auto;
   border-radius: 5px;
   flex-grow: 1;
-  object-fit: cover; /* Ensure images are well-contained */
+  object-fit: cover;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Mobile-first styles */
-@media (max-width: 767px) {
-  .news-post {
-    padding: 0.5rem;
-  }
-  .news-content {
-    width: 95vw;
-    padding: 0;
-  }
-
-  .news-post-header h2 {
-    font-size: 2rem;
-  }
-
-  .news-post-description {
-    font-size: 1.2rem;
-  }
-
-  .gallery-container img {
-    max-width: 100%;
-  }
-}
-
-/* About Us section styling */
+/* About Us Section */
 .about-content {
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem 1rem;
-  background-color: #f9f9f9; /* Light background for separation */
+  background-color: #f9f9f9;
   border-radius: 8px;
   border: 1px solid #ddd;
   margin-top: 1rem;
@@ -352,7 +179,7 @@ footer {
 
 .about-content h1 {
   font-size: 2.5rem;
-  color: #4C4B16; /* Consistent with your theme */
+  color: #4C4B16;
 }
 
 .about-content p {
@@ -362,12 +189,12 @@ footer {
   margin-bottom: 1rem;
 }
 
-/* Team Members Table styling */
+/* Team Members Section */
 .team-content {
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem 1rem;
-  background-color: #f9f9f9; /* Light background for separation */
+  background-color: #f9f9f9;
   border-radius: 8px;
   border: 1px solid #ddd;
 }
@@ -398,5 +225,160 @@ footer {
 }
 
 .club-members tr:hover {
-  background-color: #f1f1f1; /* Hover effect for rows */
+  background-color: #f1f1f1;
+}
+
+/* Sponsors Section */
+.sponsors-section {
+  padding: 4rem 1rem;
+  background-color: #f9f9f9;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.sponsors-section .section-container {
+  border: 2px solid #4C4B16;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.sponsors-section .grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+}
+
+.sponsors-section .grid-item {
+  flex: 1 1 200px;
+  max-width: 300px;
+  margin: 0.5rem;
+  height: 200px;
+  min-width: 240px;
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #4C4B16;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sponsors-section .grid-item:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sponsors-section .grid-item img {
+  max-height: 120px;
+  max-width: 200px;
+  margin-bottom: 1rem;
+}
+
+.sponsors-section .img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 1rem;
+}
+
+.sponsors-section .grid-item h3 {
+  font-size: 1rem;
+  color: #4C4B16;
+  margin: 0;
+  margin-top: auto;
+}
+
+/* Responsive Styles */
+
+/* Mobile-first styles */
+@media (max-width: 768px) {
+  .welcome-section .welcome-content {
+    width: 100%;
+    border-radius: 0;
+    padding: 1rem;
+  }
+
+  .navbar {
+    padding: 0 1.5rem;
+    font-size: 12px;
+  }
+
+  .nav-list {
+    gap: 1.5rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  .news-post {
+    padding: 0.5rem;
+  }
+
+  .news-content {
+    width: 95vw;
+    padding: 0;
+  }
+
+  .news-post-header h2 {
+    font-size: 2rem;
+  }
+
+  .news-post-description {
+    font-size: 1.2rem;
+  }
+
+  .gallery-container img {
+    max-width: 100%;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .sponsor-item {
+    width: 250px;
+    height: 120px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 3rem;
+  }
+
+  .navbar {
+    padding: 0 3rem;
+  }
+
+  .nav-list {
+    gap: 2.5rem;
+  }
+
+  .welcome-section h1 {
+    font-size: 3rem;
+  }
+
+  .sponsor-item {
+    width: 300px;
+    height: 150px;
+  }
 }
