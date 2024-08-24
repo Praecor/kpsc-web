@@ -1,0 +1,43 @@
+{
+  "umbrellaOrgs": [
+    {
+      "id": 1,
+      "category": "umbrellaOrg",
+      "title": "Slovenska zveza za praktično strelstvo",
+      "image": "assets/images/Szps-logo.png",
+      "url": "https://www.ipsc.si/"
+    },
+    {
+      "id": 2,
+      "category": "umbrellaOrg",
+      "title": "Zveza društev in klubov MORiS",
+      "image": "assets/images/moris-logo.png",
+      "url": "https://www.zvezamoris.si/"
+    }
+  ],
+  "partners": [
+    {
+      "id": 1,
+      "category": "partner",
+      "title": "OZVVS Bela krajina",
+      "image": "assets/images/zvvs-logo.png",
+      "url": "http://www.belakrajina.zvvs.si"
+    },
+    {
+      "id": 2,
+      "category": "partner",
+      "title": "OZSŠ Bela krajina",
+      "image": "assets/images/zsc-logo.png",
+      "url": "https://ozsc-belakrajina.si/"
+    }
+  ],
+  "sponsors": [
+    {
+      "id": 1,
+      "category": "sponsor",
+      "title": "ROJAL Novo mesto",
+      "image": "assets/images/rojal-logo.png",
+      "url": "https://www.rojal.si/sl/"
+    }
+  ]
+}

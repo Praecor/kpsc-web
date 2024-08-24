@@ -63,19 +63,6 @@ main {
     text-decoration: underline;
   }
 
-
-
-
-footer {
-  text-align: center;
-  padding: 2rem 1rem;
-  background-color: #4C4B16;
-  color: #fff;
-  margin-top: auto; /* Push footer to bottom */
-}
-
-
-
 /* Footer should stick to the bottom */
 footer {
   text-align: center;
@@ -119,39 +106,6 @@ footer {
   font-size: 2rem;
   font-weight: bold;
   color: #333;
-}
-
-/* Placeholder for Sponsors Section */
-.sponsors-section {
-  padding: 4rem 1rem;
-  background-color: #f9f9f9;
-  text-align: center;
-}
-
-.sponsors-section h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-  color: #4C4B16;
-}
-
-.sponsors-list {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.sponsor-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  padding: 1rem;
-  width: 200px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  font-weight: bold;
 }
 
 /* Responsive Styles */
@@ -246,6 +200,7 @@ footer {
 }
 
 .sponsors-section .grid-item {
+  border: 1px solid blue;
   background-color: #fff;
   border: 1px solid #ddd;
   padding: 1rem;
@@ -254,6 +209,13 @@ footer {
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add drop shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.sponsors-section .grid-item:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .sponsors-section .grid-item img {
@@ -272,12 +234,12 @@ footer {
 @media (min-width: 1024px) {
   .sponsors-section {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 2rem;
   }
 
   .sponsors-section .section-container {
-    margin-bottom: 0; /* Remove bottom margin when aligned in columns */
+    margin-bottom: 0;
   }
 }
 
@@ -385,12 +347,12 @@ footer {
   background-color: #f9f9f9; /* Light background for separation */
   border-radius: 8px;
   border: 1px solid #ddd;
+  margin-top: 1rem;
 }
 
 .about-content h1 {
   font-size: 2.5rem;
   color: #4C4B16; /* Consistent with your theme */
-  margin-bottom: 1rem;
 }
 
 .about-content p {

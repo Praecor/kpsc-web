@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('assets/data/partnerData.json')
+  fetch('assets/data/organisations.json')
     .then(response => response.json())
     .then(data => {
-      populateGrid(data.sponsors, 'sponsors-grid');
-      populateGrid(data.partners, 'partners-grid');
-      populateGrid(data.sisterClubs, 'sister-clubs-grid');
+      populateGrid(data.umbrellaOrgs, 'umbrella-grid');
+      populateGrid(data.partners, 'partner-grid');
+      populateGrid(data.sponsors, 'sponsor-grid');
     })
     .catch(error => console.error('Error loading data:', error));
 });
@@ -15,9 +15,14 @@ function populateGrid(items, gridId) {
     const gridItem = document.createElement('div');
     gridItem.classList.add('grid-item');
     gridItem.innerHTML = `
-      <img src="${item.image}" alt="${item.title}">
+      <div class="img-container">
+        <img src="${item.image}" alt="${item.title}">
+      </div>
       <h3>${item.title}</h3>
     `;
+    gridItem.addEventListener('click', () => {
+      window.open(item.url, '_blank'); // Navigate to the URL in a new tab
+    });
     gridContainer.appendChild(gridItem);
   });
 }
