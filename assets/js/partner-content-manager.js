@@ -47,7 +47,7 @@ function createGridItemElement(item) {
   const gridItem = document.createElement('div');
   gridItem.classList.add('grid-item');
   gridItem.innerHTML = `
-    <div class="img-container">1
+    <div class="img-container">
       <img src="${item.image}" alt="${item.title}">
     </div>
     <h3>${item.title}</h3>
