@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', async () => {
    * @returns {Promise<Object|null>} The JSON data from Contentful or null if an error occurs.
    */
   async function fetchContentData() {
-    const isStaging = process.env.NETLIFY_ENV === 'staging'; // Check if in staging
-    return isStaging ? await fetchStagingContentData() : (isLocal ? await fetchLocalContentData() : await fetchProductionContentData());
+    return isLocal ? await fetchLocalContentData() : await fetchProductionContentData();
   }
 
   /**
@@ -65,16 +64,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   async function fetchContentfulData(spaceId, accessToken) {
     const response = await fetch(`https://cdn.contentful.com/spaces/${spaceId}/entries?access_token=${accessToken}`);
     if (!response.ok) throw new Error('Failed to fetch data from Contentful');
-    return await response.json();
-  }
-
-  /**
-   * Fetches data from Contentful in staging environment.
-   * @returns {Promise<Object|null>} JSON response from the server or null if an error occurs.
-   */
-  async function fetchStagingContentData() {
-    const response = await fetch('/.netlify/functions/fetch-contentful-staging'); // Adjust the function to fetch from staging
-    if (!response.ok) throw new Error('Failed to fetch data from staging Netlify function');
     return await response.json();
   }
 
