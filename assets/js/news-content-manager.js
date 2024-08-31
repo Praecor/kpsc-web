@@ -90,9 +90,12 @@ document.addEventListener( 'DOMContentLoaded', async () => {
    * @returns {HTMLElement} The post description element.
    */
   function createPostDescription( item ) {
+    console.log('createPostDescription - item:', item);
     const postDescription = document.createElement( 'div' );
     postDescription.className = 'news-post-description';
-    postDescription.innerHTML = `<p>${item.fields.description}</p>`;
+    const richTextContent = item.fields.content; // Assuming this is a rich text field
+    postDescription.innerHTML = documentToHtmlString(richTextContent);
+
     return postDescription;
   }
 
