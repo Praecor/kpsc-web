@@ -69,6 +69,19 @@ document.addEventListener( 'DOMContentLoaded', async () => {
   }
 
   /**
+   * Formats a date string into DD/MM/YYYY format.
+   * @param {string} dateString - The date string in ISO format.
+   * @returns {string} The formatted date.
+   */
+  function formatDate( dateString ) {
+    const date = new Date( dateString );
+    const day = String( date.getDate() ).padStart( 2, '0' );
+    const month = String( date.getMonth() + 1 ).padStart( 2, '0' );
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+  }
+
+  /**
    * Creates the post header element.
    * @param {Object} item - The content item.
    * @returns {HTMLElement} The post header element.
@@ -76,11 +89,9 @@ document.addEventListener( 'DOMContentLoaded', async () => {
   function createPostHeader( item ) {
     const postHeader = document.createElement( 'div' );
     postHeader.className = 'news-post-header';
-    const formattedDate = new Date( item.sys.createdAt ).toLocaleDateString( 'en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    } );
+
+    const formattedDate = formatDate( item.fields.date );
+
     postHeader.innerHTML = `<h2>${item.fields.title}</h2><span class="date">${formattedDate}</span>`;
     return postHeader;
   }
@@ -145,6 +156,19 @@ document.addEventListener( 'DOMContentLoaded', async () => {
   }
 
   /**
+   * Sorts an array of items by their date field in descending order.
+   * @param {Array} items - The array of content items.
+   * @returns {Array} The sorted array of items.
+   */
+  function sortItemsByDate( items ) {
+    return items.sort( ( a, b ) => {
+      const dateA = new Date( a.fields.date );
+      const dateB = new Date( b.fields.date );
+      return dateB - dateA;
+    } );
+  }
+
+  /**
    * Displays the fetched content on the webpage.
    * @param {Object} data - The data object containing items and assets from Contentful.
    */
@@ -153,12 +177,13 @@ document.addEventListener( 'DOMContentLoaded', async () => {
     if ( contentContainer && data ) {
       contentContainer.innerHTML = '';
       const assetMap = new Map( data.includes?.Asset?.map( asset => [ asset.sys.id, asset.fields.file.url ] ) || [] );
-      for ( const item of data.items ) {
 
+      const sortedItems = sortItemsByDate( data.items );
+
+      for ( const item of sortedItems ) {
         if ( item.fields.title.startsWith( 'TEST' ) && !isLocal ) {
           continue;
         }
-
         contentContainer.appendChild( createContentItem( item, assetMap ) );
       }
     }
