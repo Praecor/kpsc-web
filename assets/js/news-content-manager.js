@@ -6,7 +6,8 @@
 
 document.addEventListener( 'DOMContentLoaded', async () => {
   const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
+  const spinner = document.getElementById( 'spinner' );
+  spinner.style.display = 'block';
   /**
    * Fetches content data based on the environment.
    * @returns {Promise<Object|null>} The JSON data from Contentful or null if an error occurs.
@@ -90,11 +91,10 @@ document.addEventListener( 'DOMContentLoaded', async () => {
    * @returns {HTMLElement} The post description element.
    */
   function createPostDescription( item ) {
-    console.log('createPostDescription - item:', item);
     const postDescription = document.createElement( 'div' );
     postDescription.className = 'news-post-description';
     const richTextContent = item.fields.content; // Assuming this is a rich text field
-    postDescription.innerHTML = documentToHtmlString(richTextContent);
+    postDescription.innerHTML = documentToHtmlString( richTextContent );
 
     return postDescription;
   }
@@ -155,7 +155,7 @@ document.addEventListener( 'DOMContentLoaded', async () => {
       const assetMap = new Map( data.includes?.Asset?.map( asset => [ asset.sys.id, asset.fields.file.url ] ) || [] );
       for ( const item of data.items ) {
 
-        if ( item.fields.title.startsWith('TEST') && !isLocal) {
+        if ( item.fields.title.startsWith( 'TEST' ) && !isLocal ) {
           continue;
         }
 
@@ -166,6 +166,9 @@ document.addEventListener( 'DOMContentLoaded', async () => {
 
   // Main execution
   const data = await fetchContentData();
+  spinner.style.display = 'none';
+
+
   if ( data ) {
     displayContent( data );
   }

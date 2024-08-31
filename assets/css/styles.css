@@ -70,6 +70,25 @@ footer {
   margin-top: auto;
 }
 
+/* Spinner */
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #4C4B16; /* Blue */
+  border-radius: 50%;
+  width: 50px; /* Size of the spinner */
+  height: 50px; /* Size of the spinner */
+  animation: spin 1s linear infinite; /* Animation */
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the spinner */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 /* Welcome Section */
 .welcome-section {
   background-image: url('../images/kps-welcome.jpg');
