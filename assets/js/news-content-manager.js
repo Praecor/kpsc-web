@@ -59,15 +59,22 @@ document.addEventListener( 'DOMContentLoaded', async () => {
       } );
     }
   }
-
   function createContentItem( item, assetMap, includes ) {
     const contentItem = document.createElement( 'div' );
     contentItem.className = 'news-post';
-    contentItem.appendChild( createPostHeader( item ) );
-    contentItem.appendChild( createPostDescription( item, includes ) );
-    if ( item.fields.images?.length ) {
-      contentItem.appendChild( createImageGallery( item, assetMap ) );
-    }
+
+    const header = createPostHeader( item );
+    if ( header ) contentItem.appendChild( header );
+
+    const description = createPostDescription( item );
+    if ( description ) contentItem.appendChild( description );
+
+    const pdfLinks = createPdfLinks( item, includes );
+    if ( pdfLinks ) contentItem.appendChild( pdfLinks );
+
+    const imageGallery = createImageGallery( item, assetMap );
+    if ( imageGallery ) contentItem.appendChild( imageGallery );
+
     return contentItem;
   }
 
@@ -78,15 +85,21 @@ document.addEventListener( 'DOMContentLoaded', async () => {
     return postHeader;
   }
 
-  function createPostDescription( item, includes ) {
+  function createPostDescription( item ) {
     const postDescription = document.createElement( 'div' );
     postDescription.className = 'news-post-description';
     postDescription.innerHTML = documentToHtmlString( item.fields.content );
+    return postDescription;
+  }
+
+  function createPdfLinks( item, includes ) {
+    if ( !item.fields.docs?.length ) return null;
+
 
     const pdfContainer = document.createElement( 'div' );
     pdfContainer.className = 'pdf-links-container';
 
-    item.fields.docs?.forEach( docLink => {
+    item.fields.docs.forEach( docLink => {
       const resolvedDoc = resolveAsset( docLink, includes );
       if ( resolvedDoc?.fields.file ) {
         const pdfLink = document.createElement( 'a' );
@@ -100,30 +113,30 @@ document.addEventListener( 'DOMContentLoaded', async () => {
       }
     } );
 
-    postDescription.appendChild( pdfContainer );
-    return postDescription;
+    return pdfContainer;
   }
 
   function createImageGallery( item, assetMap ) {
+    if ( !item.fields.images?.length ) return null;
+
     const galleryContainer = document.createElement( 'div' );
-    galleryContainer.className = 'gallery-container';
-    item.fields.images.forEach( image => {
-      const imageURL = assetMap.get( image.sys.id );
-      if ( imageURL ) {
+    galleryContainer.className = 'image-gallery';
+
+    item.fields.images.forEach( imageLink => {
+      const resolvedImage = assetMap[ imageLink.sys.id ];
+      if ( resolvedImage?.fields.file ) {
         const imgElement = document.createElement( 'img' );
-        imgElement.src = `https:${imageURL}`;
-        imgElement.alt = item.fields.title || '';
-        imgElement.style.cursor = 'pointer';
-        imgElement.addEventListener( 'click', () => {
-          window.open( `image-viewer.html?src=https:${imageURL}`, '_blank' );
-        } );
+        imgElement.src = `https:${resolvedImage.fields.file.url}`;
+        imgElement.alt = resolvedImage.fields.title || 'Image';
         galleryContainer.appendChild( imgElement );
       } else {
-        console.warn( 'Asset not found for image:', image );
+        console.warn( 'Could not resolve image:', imageLink );
       }
     } );
+
     return galleryContainer;
   }
+
 
   function resolveAsset( assetLink, includes ) {
     return includes?.Asset?.find( asset => asset.sys.id === assetLink.sys.id ) || null;
