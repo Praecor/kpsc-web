@@ -116,23 +116,29 @@ document.addEventListener( 'DOMContentLoaded', async () => {
     return pdfContainer;
   }
 
-  function createImageGallery( item, assetMap ) {
-    if ( !item.fields.images?.length ) return null;
+  function createImageGallery(item, assetMap) {
+    if (!item.fields.images?.length) return null;
 
-    const galleryContainer = document.createElement( 'div' );
-    galleryContainer.className = 'image-gallery';
+    const galleryContainer = document.createElement('div');
+    galleryContainer.className = 'gallery-container';
 
-    item.fields.images.forEach( imageLink => {
-      const resolvedImage = assetMap[ imageLink.sys.id ];
-      if ( resolvedImage?.fields.file ) {
-        const imgElement = document.createElement( 'img' );
-        imgElement.src = `https:${resolvedImage.fields.file.url}`;
-        imgElement.alt = resolvedImage.fields.title || 'Image';
-        galleryContainer.appendChild( imgElement );
+    item.fields.images.forEach(imageLink => {
+      const resolvedImageUrl = assetMap.get(imageLink.sys.id);
+      if (resolvedImageUrl) {
+        const anchorElement = document.createElement('a');
+        anchorElement.href = `https:${resolvedImageUrl}`;
+        anchorElement.target = '_blank';
+
+        const imgElement = document.createElement('img');
+        imgElement.src = `https:${resolvedImageUrl}`;
+        imgElement.alt = imageLink.fields?.title || 'Image';
+
+        anchorElement.appendChild(imgElement);
+        galleryContainer.appendChild(anchorElement);
       } else {
-        console.warn( 'Could not resolve image:', imageLink );
+        console.warn('Could not resolve image:', imageLink);
       }
-    } );
+    });
 
     return galleryContainer;
   }
