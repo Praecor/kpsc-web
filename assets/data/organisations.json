@@ -26,7 +26,7 @@
     {
       "id": 2,
       "category": "partner",
-      "title": "OZSŠ Bela krajina",
+      "title": "OZSČ Bela krajina",
       "image": "assets/images/zsc-logo.png",
       "url": "https://ozsc-belakrajina.si/"
     }
@@ -38,6 +38,15 @@
       "title": "ROJAL Novo mesto",
       "image": "assets/images/rojal-logo.png",
       "url": "https://www.rojal.si/sl/"
+    }
+  ],
+  "patrons": [
+    {
+      "id": 1,
+      "category": "patron",
+      "title": "Občina Črnomelj",
+      "image": "assets/images/grb-crnomelj.png",
+      "url": "https://www.crnomelj.si/"
     }
   ]
 }

@@ -11,6 +11,7 @@ document.addEventListener( 'DOMContentLoaded', () => {
       populateGrid( data.umbrellaOrgs, 'umbrella-grid' );
       populateGrid( data.partners, 'partner-grid' );
       populateGrid( data.sponsors, 'sponsor-grid' );
+      populateGrid(data.patrons, 'patron-grid');
     } )
     .catch( error => console.error( 'Error loading data:', error ) );
 } );
